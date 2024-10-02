@@ -44,16 +44,13 @@ hi! link @type.builtin.c Type
 hi! link rustStorage Statement
 hi! link rustSigil Operator
 hi! link rustMacro Function
+hi! Operator NONE
+hi! Statement NONE
+hi! Type NONE
 
 if s:colorful
-	call s:h("Operator", { "fg": s:p.lowhite })
-	call s:h("Statement", { "fg": s:p.lowhite })
-	call s:h("Type", { "fg": s:p.hiwhite })
 	call s:h("Function", { "fg": s:p.blue })
 else
-	hi! Operator NONE
-	hi! Statement NONE
-	hi! Type NONE
 	hi! Function NONE
 endif
 
