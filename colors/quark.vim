@@ -2,8 +2,6 @@ hi clear
 syntax reset
 let g:colors_name="quark"
 
-let s:colorful = get(g:, "quark_colorful", 0)
-
 func! s:h(group, style)
 	execute "hi" a:group
 		\ "guifg=" (has_key(a:style, "fg") ? a:style.fg : "NONE")
@@ -15,6 +13,8 @@ let s:p = quark#palette()
 
 call s:h("Normal", { "bg": s:p.bg, "fg": s:p.white })
 call s:h("Comment", { "fg": s:p.dim })
+call s:h("Type", { "fg": s:p.hiwhite })
+call s:h("Function", { "fg": s:p.blue })
 call s:h("String", { "fg": s:p.green })
 call s:h("MatchParen", { "gui": "underline", "fg": s:p.blue })
 call s:h("LineNr", { "fg": s:p.gutter })
@@ -44,15 +44,9 @@ hi! link @type.builtin.c Type
 hi! link rustStorage Statement
 hi! link rustSigil Operator
 hi! link rustMacro Function
+
 hi! Operator NONE
 hi! Statement NONE
-hi! Type NONE
-
-if s:colorful
-	call s:h("Function", { "fg": s:p.blue })
-else
-	hi! Function NONE
-endif
 
 call s:h("htmlTitle", { "fg": s:p.white })
 call s:h("Identifier", { "fg": s:p.white })
